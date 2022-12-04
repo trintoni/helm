@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-deployment
+  labels:
+    app: {{ .Release.Name }}
+spec:
+  replicas: 1 
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}
+    spec:
+      volumes:
+        - name: xldisk
+          persistentVolumeClaim:
+            claimName: xlrelease-disk-pvc
+      containers:
+      - name: {{ .Release.Name }}-pod
+        image: {{ .Values.xrelease.image }} 
+        env:
+          - name: ADMIN_PASSWORD
+            value: {{ .Values.xrelease.credential.userPassword }}
+          - name: ACCEPT_EULA
+            value: {{ .Values.xrelease.credential.eula }}
+        ports:
+        - containerPort: 5516
+        volumeMounts:
+          - name: xldisk
+            mountPath: /opt/xebialabs/xl-release-server/conf/
+            subPath: conf
+          - name: xldisk
+            mountPath: /opt/xebialabs/xl-release-server/hotfix/
+            subPath: hotfix
+          - name: xldisk
+            mountPath: /opt/xebialabs/xl-release-server/ext/
+            subPath: ext  
+          - name: xldisk
+            mountPath: /opt/xebialabs/xl-release-server/plugins/
+            subPath: xlrelease-disk
+          - name: xldisk
+            mountPath: /opt/xebialabs/xl-release-server/repository/
+            subPath: repository
+          - name: xldisk
+            mountPath: /opt/xebialabs/xl-release-server/archive/
+            subPath: archive
+          - name: xldisk
+            mountPath: /opt/xebialabs/xl-release-server/reports/
+            subPath: reports

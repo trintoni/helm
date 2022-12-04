@@ -1,0 +1,5 @@
+xlrelease:
+  image: xebialabs/xl-release
+  credentials:
+    userPassword: papagaio
+    eula: "Y"
