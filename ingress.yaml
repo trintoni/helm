@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  labels:
+    app: xlrelease
+  name: ingress-xlrelease
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: xlrelease.domain.com
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: svc-xlrelease
+            port:
+              number: 5516 

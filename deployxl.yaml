@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: xlrelease-deployment
+  labels:
+    app: xlrelease 
+spec:
+  replicas: 1 
+  selector:
+    matchLabels:
+      app: xlrelease 
+  template:
+    metadata:
+      labels:
+        app: xlrelease 
+    spec:
+      volumes:
+        - name: xldisk
+          persistentVolumeClaim:
+            claimName: xlrelease-disk-pvc
+      containers:
+      - name: xlrelease
+        image:  xebialabs/xl-release
+        env:
+          - name: ADMIN_PASSWORD
+            value: "papagaio"
+          - name: ACCEPT_EULA
+            value: "Y"
+        ports:
+        - containerPort: 5516
+        volumeMounts:
+          - name: xldisk
+            mountPath: /opt/xebialabs/xl-release-server/conf/
+            subPath: conf
+          - name: xldisk
+            mountPath: /opt/xebialabs/xl-release-server/hotfix/
+            subPath: hotfix
+          - name: xldisk
+            mountPath: /opt/xebialabs/xl-release-server/ext/
+            subPath: ext  
+          - name: xldisk
+            mountPath: /opt/xebialabs/xl-release-server/plugins/
+            subPath: xlrelease-disk
+          - name: xldisk
+            mountPath: /opt/xebialabs/xl-release-server/repository/
+            subPath: repository
+          - name: xldisk
+            mountPath: /opt/xebialabs/xl-release-server/archive/
+            subPath: archive
+          - name: xldisk
+            mountPath: /opt/xebialabs/xl-release-server/reports/
+            subPath: reports
