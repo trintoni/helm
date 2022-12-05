@@ -9,7 +9,7 @@ spec:
   ingressClassName: nginx
   rules:
 {{- range .Values.xlrelease.ingress.hosts  }} 
-  - host: {{ .  }} 
+  - host: {{ . }} 
     http:
       paths:
       - pathType: Prefix
@@ -19,5 +19,5 @@ spec:
             name: {{ $.Release.Name }}-svc
             port:
               number: 5516
-  {{- end }}
+{{- end }}
 {{ end }}

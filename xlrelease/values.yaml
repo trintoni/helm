@@ -5,5 +5,7 @@ xlrelease:
     eula: "Y"
   serviceType: ClusterIP
   ingress:
-    enabled: true
-    hosts: ["xlrelease.domain.com", "xlrelease.trinta.com"] 
+    enabled: false
+    hosts: 
+     - "xlrelease.domain.com"
+     - "xlrelease.trinta.com"

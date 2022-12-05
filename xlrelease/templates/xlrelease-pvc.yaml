@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  namespace: {{ .Release.Name }}
+  labels:
+    app: {{ .Release.Name }} 
+  name: {{ .Release.Name }}-disk-pvc
+spec: 
+  accessModes:
+    - ReadWriteMany
+  storageClassName: {{ .Release.Name }}-disk
+  resources:
+    requests:
+      storage: 5Gi
