@@ -20,12 +20,12 @@ spec:
             claimName: xlrelease-disk-pvc
       containers:
       - name: {{ .Release.Name }}-pod
-        image: {{ .Values.xrelease.image }} 
+        image: {{ .Values.xlrelease.image }} 
         env:
           - name: ADMIN_PASSWORD
-            value: {{ .Values.xrelease.credential.userPassword }}
+            value: {{ .Values.xlrelease.credential.userPassword }}
           - name: ACCEPT_EULA
-            value: {{ .Values.xrelease.credential.eula }}
+            value: {{ .Values.xlrelease.credential.eula }}
         ports:
         - containerPort: 5516
         volumeMounts:

@@ -1,5 +1,9 @@
 xlrelease:
   image: xebialabs/xl-release
-  credentials:
+  credential:
     userPassword: papagaio
     eula: "Y"
+  serviceType: ClusterIP
+  ingress:
+    enabled: true
+    hosts: ["xlrelease.domain.com", "xlrelease.trinta.com"] 
