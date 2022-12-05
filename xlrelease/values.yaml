@@ -3,7 +3,7 @@ xlrelease:
   credential:
     userPassword: papagaio
     eula: "Y"
-  serviceType: ClusterIP
+  serviceType: NodePort
   ingress:
     enabled: false
     hosts: 
