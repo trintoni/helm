@@ -4,11 +4,11 @@ metadata:
   namespace: {{ .Release.Name }}
   labels:
     app: {{ .Release.Name }} 
-  name: {{ .Release.Name }}-disk-pvc
+  name: {{ .Release.Name }}diskpvc
 spec: 
   accessModes:
     - ReadWriteMany
-  storageClassName: {{ .Release.Name }}-disk
+  storageClassName: {{ .Release.Name }}disk
   resources:
     requests:
       storage: 5Gi

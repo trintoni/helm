@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   namespace: {{ .Release.Name }} 
-  name: {{ .Release.Name }}-deployment
+  name: {{ .Release.Name }}deployment
   labels:
     app: {{ .Release.Name }}
 spec:
@@ -18,9 +18,9 @@ spec:
       volumes:
         - name: xldisk
           persistentVolumeClaim:
-            claimName: {{ .Release.Name }}-disk-pvc
+            claimName: {{ .Release.Name }}diskpvc
       containers:
-      - name: {{ .Release.Name }}-pod
+      - name: {{ .Release.Name }}
         image: {{ .Values.xlrelease.image }} 
         env:
           - name: ADMIN_PASSWORD

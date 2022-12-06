@@ -1,11 +1,11 @@
 xlrelease:
-  image: xebialabs/xl-release
+  image: "xebialabs/xl-release"
   credential:
-    userPassword: papagaio
-    eula: "Y"
-  serviceType: NodePort
+    userPassword: '"papagaio"'
+    eula: '"Y"'
+  serviceType: "NodePort"
   ingress:
-    enabled: false
+    enabled: true 
     hosts: 
      - "xlrelease.domain.com"
      - "xlrelease.trinta.com"

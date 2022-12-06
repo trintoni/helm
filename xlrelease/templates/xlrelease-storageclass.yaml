@@ -4,7 +4,7 @@ metadata:
   namespace: {{ .Release.Name }}
   labels:
     app: {{ .Release.Name }} 
-  name: {{ .Release.Name  }}-disk
+  name: {{ .Release.Name  }}disk
 provisioner: k8s.io/minikube-hostpath
 mountOptions:
   - dir_mode=0777

@@ -4,10 +4,10 @@ metadata:
   namespace: {{ .Release.Name  }} 
   labels:
     app: {{ .Release.Name  }} 
-  name: {{ .Release.Name }}-svc 
+  name: {{ .Release.Name }}svc 
 spec:
+  type: {{ .Values.xlrelease.serviceType }} 
   selector:
     app: {{ .Release.Name  }} 
   ports:
     - port: 5516
-  type: {{ .Values.xlrelease.serviceType }}
