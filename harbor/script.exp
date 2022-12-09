@@ -1,0 +1,11 @@
+spawn $env(SHELL)
+send -- "minikube ssh"
+expect -exact "minikube ssh"
+send -- "\r"
+send -- "sudo mkdir -p /etc/docker/certs.d/core.harbor.domain"
+send -- "\r"
+send -- "sudo cp harbor-ca.crt /etc/docker/certs.d/core.harbor.domain"
+send -- "\r"
+send -- "exit"
+send -- "\r"
+expect eof
