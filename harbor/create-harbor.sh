@@ -7,7 +7,8 @@
 # expect - Quer será instalado por esse script
 echo -n "
 
-Execute este script com SUDO para instalar o harbor
+Seu usuário: $USER, deve obrigatoriamente ter permissões de sudo para o script funcionar
+
 Para seguir a instalação é necessario a instalação do expect (Automatizada no Script)
 1 - Este script iniciará o minikube
 2 - Habilitará o ingress no minikube
@@ -40,19 +41,11 @@ fi
 echo "Aguardando o ambiente subir..."
 sleep 20
 echo
-echo -n "Neste momento criaremos as entradas de nome no seu arquivo local hosts /etc/hosts:
-O nome do host será core.harbor.domain
+echo -n "Neste momento voce deverá criar a entrada no seu /etc/hosts para acesso ao harbor via browser 
+O nome do host será core.harbor.domain ou outro que voce queira
 
 Entrada no /etc/hosts à adicionar:
 
-<IP DO MINIKUBE> core.harbor.domain
-
+$(minikube ip) core.harbor.domain
 "
-read -p "Deseja continuar? (S/N):? " resp1
-if [ $resp = S ];then
-	minikube status | grep "Running"
-	if [ $? = 0 ];then
-		echo $(minikuke ip) >> /etc/hosts
-	fi
-fi
 
